@@ -1,0 +1,125 @@
+{
+  "project": {
+    "name": "CropVision AI",
+    "tagline": "Instant Crop Disease Diagnosis for Every Farmer",
+    "description": "A mobile AI system that lets farmers photograph a crop leaf and instantly receive the disease name, severity grade, and step-by-step treatment.",
+    "github": "https://github.com/CropVision-Team/CropVision.git",
+    "demo": "http://localhost:8080",
+    "demoVideo": "assets/videos/demo.mp4",
+    "apkDownload": "CropVision.apk"
+  },
+  "institution": {
+    "name": "Department of Computer Science & Engineering",
+    "department": "Department of Computer Science & Engineering",
+    "academicYear": "2025-2026",
+    "course": "B.E. Final Year Project"
+  },
+  "team": {
+    "guide": {
+      "name": "Ms. Suchithra M",
+      "title": "Project Guide & Mentor",
+      "designation": "Assistant Professor",
+      "email": "suchithra@cse.edu"
+    },
+    "members": [
+      { "name": "Varun Sivaselvan V S", "role": "Team Lead, Full-Stack & ML", "initials": "VS" },
+      { "name": "Deepan S", "role": "AI/ML Engineer", "initials": "DS" },
+      { "name": "Rippan", "role": "Backend Developer", "initials": "RP" },
+      { "name": "Udhay", "role": "Computer Vision Engineer", "initials": "UD" }
+    ]
+  },
+  "metrics": {
+    "classes": 38,
+    "cropTypes": 14,
+    "validationAccuracy": "99.09%",
+    "testAccuracy": "99.05%",
+    "treatmentCombinations": 65,
+    "automatedTests": 53,
+    "trainingEpochs": "5",
+    "batchSize": 32,
+    "inputSize": "224x224 px",
+    "modelParams": "5.6M",
+    "inferenceTime": "~140 ms"
+  },
+  "videos": {
+    "mainVideo": {
+      "title": "CropVision AI Full Application Walkthrough",
+      "src": "assets/videos/demo.mp4",
+      "youtubeUrl": "",
+      "poster": "assets/screenshots/dashboard.png",
+      "duration": "3:15",
+      "description": "Recorded screen walkthrough of CropVision AI on device: leaf photography, automated focus/quality checks, MobileViT disease classification, and severity-calibrated prescriptions."
+    },
+    "grid": [
+      {
+        "id": "full-demo",
+        "title": "Full App Demo",
+        "duration": "3:15",
+        "src": "assets/videos/demo.mp4",
+        "youtubeUrl": "",
+        "thumbnail": "assets/screenshots/dashboard.png",
+        "description": "Complete walkthrough of the mobile app from leaf scanning to severity diagnosis."
+      },
+      {
+        "id": "how-to-use",
+        "title": "How to Use the App (Step by Step)",
+        "duration": "2:45",
+        "src": "assets/videos/how-to-use.mp4",
+        "youtubeUrl": "",
+        "thumbnail": "assets/screenshots/dashboard.png",
+        "description": "Step-by-step tutorial: leaf positioning, reading diagnostic severity badges, and scheduling spray reminders."
+      },
+      {
+        "id": "model-training",
+        "title": "Model Training and Results",
+        "duration": "4:20",
+        "src": "assets/videos/model-explained.mp4",
+        "youtubeUrl": "",
+        "thumbnail": "assets/screenshots/model_accuracy_terminal.png",
+        "description": "Deep-dive into MobileViT-Small training on 54,306 images with 99.05% test set accuracy."
+      },
+      {
+        "id": "code-walkthrough",
+        "title": "Code Walkthrough",
+        "duration": "5:10",
+        "src": "assets/videos/code-walkthrough.mp4",
+        "youtubeUrl": "",
+        "thumbnail": "assets/screenshots/dashboard.png",
+        "description": "Architecture tour: Flutter Provider state, Flask local inference server, and Supabase SQL schema."
+      }
+    ],
+    "timestamps": [
+      { "time": "0:10", "seconds": 10, "label": "Overview & Dashboard" },
+      { "time": "0:30", "seconds": 30, "label": "Add & Register Crop" },
+      { "time": "1:00", "seconds": 60, "label": "Diagnose Leaf & Quality Checks" },
+      { "time": "1:45", "seconds": 105, "label": "Crop Growth Calendar" },
+      { "time": "2:15", "seconds": 135, "label": "Diagnostic Scan History" },
+      { "time": "2:45", "seconds": 165, "label": "AI Agronomist Assistant" }
+    ],
+    "fiveStepsGuide": [
+      { "step": 1, "title": "Open CropVision AI", "desc": "Launch the app and tap 'Diagnose Crop Leaf' or select an active crop cultivar from the dashboard." },
+      { "step": 2, "title": "Position Leaf in Frame", "desc": "Center the suspected leaf inside the camera reticle with adequate ambient natural daylight." },
+      { "step": 3, "title": "Automated Quality Check", "desc": "On-device algorithms verify focus sharpness (>100 Laplacian score) and foliage content (>15% plant pixels) instantly." },
+      { "step": 4, "title": "Review Disease & Severity", "desc": "View the identified disease condition, confidence percentage, and quantitative G0–G3 severity grade." },
+      { "step": 5, "title": "Follow Tailored Prescriptions", "desc": "Apply calibrated chemical and biological treatments, follow spray intervals, and track recovery in history." }
+    ],
+    "screenshots": [
+      {
+        "src": "assets/screenshots/dashboard.png",
+        "title": "Farmer Dashboard",
+        "caption": "Active crops, scan totals, pending tasks, and quick diagnose button"
+      },
+      {
+        "src": "assets/screenshots/model_accuracy_terminal.png",
+        "title": "MobileViT Training Output",
+        "caption": "Final evaluation run showing 99.05% test set accuracy"
+      }
+    ]
+  },
+  "downloads": {
+    "projectReport": "#",
+    "srs": "#",
+    "ppt": "#",
+    "apk": "https://github.com/CropVision-Team/CropVision/releases"
+  }
+}
