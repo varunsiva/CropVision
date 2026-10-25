@@ -1754,12 +1754,15 @@ h1, h2, h3, h4, h5 {
 }
 
 .screenshots-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: center;
   gap: 28px;
+  flex-wrap: wrap;
 }
 
 .screenshot-item {
+  max-width: 580px;
+  width: 100%;
   background: var(--surface);
   border: 1px solid var(--surface-border);
   border-radius: var(--r-xl);
