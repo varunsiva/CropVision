@@ -81,6 +81,69 @@
   --tr-base: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ======================== DARK THEME VARIABLES ======================== */
+[data-theme="dark"] {
+  /* Surfaces & Backgrounds */
+  --bg: #0b1120;
+  --bg-subtle: #0f172a;
+  --surface: #131e36;
+  --surface-border: #1e2d4a;
+
+  /* Typography */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+
+  /* Neutrals */
+  --n-950: #f8fafc;
+  --n-900: #f1f5f9;
+  --n-800: #e2e8f0;
+  --n-700: #cbd5e1;
+  --n-600: #94a3b8;
+  --n-500: #64748b;
+  --n-400: #475569;
+  --n-300: #334155;
+  --n-200: #1e293b;
+  --n-100: #172338;
+  --n-50:  #0d1627;
+
+  /* Brand Greens */
+  --g-50:  #062c1d;
+  --g-100: #0c3e27;
+  --g-200: #145634;
+  --g-300: #1c7044;
+  --g-400: #34d399;
+  --g-500: #10b981;
+  --g-600: #22c55e;
+  --g-700: #4ade80;
+  --g-800: #86efac;
+  --g-900: #bbf7d0;
+  --g-950: #ecfdf5;
+
+  /* Accents */
+  --amber-50:  #291802;
+  --amber-100: #452805;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #f59e0b;
+
+  --red-50:    #2d0e0e;
+  --red-100:   #4d1515;
+  --red-500:   #f87171;
+  --red-600:   #ef4444;
+
+  --blue-50:   #0d1a2d;
+  --blue-100:  #142b4d;
+  --blue-500:  #60a5fa;
+  --blue-600:  #3b82f6;
+
+  /* Shadows */
+  --sh-sm: 0 1px 3px rgba(0, 0, 0, 0.45);
+  --sh-md: 0 4px 14px rgba(0, 0, 0, 0.55);
+  --sh-lg: 0 12px 30px rgba(0, 0, 0, 0.65);
+  --sh-xl: 0 20px 48px rgba(0, 0, 0, 0.75);
+}
+
 /* ======================== RESET & BASE ======================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -247,7 +310,51 @@ h1, h2, h3, h4, h5 {
 }
 
 .nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   flex-shrink: 0;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--surface-border);
+  background: var(--surface);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all var(--tr-fast);
+  padding: 0;
+  box-shadow: var(--sh-sm);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--g-50);
+  border-color: var(--g-400);
+  color: var(--g-600);
+  transform: rotate(18deg) scale(1.05);
+}
+
+.sun-icon {
+  display: none;
+}
+
+.moon-icon {
+  display: block;
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .sun-icon {
+  display: block;
+  color: var(--amber-400);
+}
+
+[data-theme="dark"] .moon-icon {
+  display: none;
 }
 
 .btn-github {
@@ -2453,7 +2560,14 @@ h1, h2, h3, h4, h5 {
   }
   .nav-menu.active { display: flex; }
   .nav-toggle { display: flex; }
-  .nav-cta { display: none; }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-cta .btn-github {
+    display: none;
+  }
   .nav-link { padding: 10px 14px; font-size: 0.9375rem; }
 }
 
@@ -2483,3 +2597,250 @@ h1, h2, h3, h4, h5 {
   .screenshots-gallery-grid { grid-template-columns: 1fr; }
   .supabase-grid { grid-template-columns: 1fr; }
 }
+
+/* ======================== DARK THEME COMPONENT OVERRIDES ======================== */
+[data-theme="dark"] .navbar {
+  background: rgba(11, 17, 32, 0.94);
+  border-bottom-color: var(--surface-border);
+}
+
+[data-theme="dark"] .brand {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .nav-link {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  color: var(--g-400);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+[data-theme="dark"] .hero {
+  background: radial-gradient(circle at 50% 0%, #0d2e21 0%, #0b1120 70%);
+}
+
+[data-theme="dark"] .hero-title {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .hero-desc {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .hero-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(52, 211, 153, 0.35);
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .btn-outline {
+  background: var(--surface);
+  border-color: var(--surface-border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: var(--g-400);
+  color: #34d399;
+}
+
+[data-theme="dark"] .btn-github {
+  background: #1e293b;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+[data-theme="dark"] .btn-github:hover {
+  background: #2b3b55;
+  border-color: var(--g-400);
+}
+
+[data-theme="dark"] .sim-card {
+  border-color: var(--surface-border);
+}
+
+[data-theme="dark"] .sim-body {
+  background: var(--surface);
+}
+
+[data-theme="dark"] .sim-sample-btn {
+  background: var(--n-50);
+  border-color: var(--surface-border);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .sim-sample-btn:hover {
+  background: var(--g-50);
+  border-color: var(--g-400);
+}
+
+[data-theme="dark"] .sim-sample-btn.active {
+  background: var(--g-100);
+  border-color: var(--g-400);
+  color: #a7f3d0;
+}
+
+[data-theme="dark"] .pipeline-trace-box {
+  background: var(--n-50);
+  border-color: var(--surface-border);
+}
+
+[data-theme="dark"] .trace-row {
+  border-bottom-color: var(--surface-border);
+}
+
+[data-theme="dark"] .math-callout {
+  background: #0b2217;
+  border-color: #124029;
+}
+
+[data-theme="dark"] .math-title {
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .math-formula {
+  background: #07150f;
+  color: #34d399;
+  border-color: #165335;
+}
+
+[data-theme="dark"] .deepdive-tab {
+  background: var(--surface);
+  border-color: var(--surface-border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .deepdive-tab:hover {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: var(--g-400);
+}
+
+[data-theme="dark"] .deepdive-tab.active {
+  background: var(--g-600);
+  color: #ffffff;
+  border-color: var(--g-500);
+}
+
+[data-theme="dark"] .crop-chip {
+  background: var(--surface);
+  border-color: var(--surface-border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .crop-chip:hover {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: var(--g-400);
+}
+
+[data-theme="dark"] .crop-chip.active {
+  background: var(--g-600);
+  color: #ffffff;
+  border-color: var(--g-500);
+}
+
+[data-theme="dark"] .benchmark-table th {
+  background: #0d2118;
+  color: #f1f5f9;
+  border-bottom: 2px solid #1a4d33;
+}
+
+[data-theme="dark"] .benchmark-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .benchmark-row-best {
+  background: rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .chapter-btn {
+  background: var(--n-50);
+  border-color: var(--surface-border);
+}
+
+[data-theme="dark"] .chapter-btn:hover {
+  background: #14233c;
+  border-color: var(--g-400);
+}
+
+[data-theme="dark"] .docs-btn {
+  background: var(--surface);
+  border-color: var(--surface-border);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .docs-btn:hover {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: var(--g-400);
+}
+
+[data-theme="dark"] .docs-btn.active {
+  background: var(--g-600);
+  color: #ffffff;
+  border-color: var(--g-500);
+}
+
+[data-theme="dark"] .phone-screen-body {
+  background: #090e17;
+}
+
+[data-theme="dark"] .dash-greeting {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .stat-pill,
+[data-theme="dark"] .dash-recent-item,
+[data-theme="dark"] .cal-stage-card,
+[data-theme="dark"] .cal-reminder-item,
+[data-theme="dark"] .result-rx-box {
+  background: #131e36;
+  border-color: #1e2d4a;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .cal-stage-card strong,
+[data-theme="dark"] .dash-recent-item,
+[data-theme="dark"] .result-disease-name {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .phone-screen-body.result-view {
+  background: #090e17;
+}
+
+[data-theme="dark"] .rx-text {
+  background: var(--n-50);
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .nav-toggle span {
+  background: #f8fafc;
+}
+
+[data-theme="dark"] .metric-num {
+  color: var(--g-400);
+}
+
+[data-theme="dark"] .highlight-stat {
+  color: var(--g-400);
+}
+
+[data-theme="dark"] .video-missing-fallback,
+[data-theme="dark"] .video-missing-card {
+  background: #0a0f1d;
+  border: 1px solid var(--surface-border);
+}
+
+@media (max-width: 980px) {
+  [data-theme="dark"] .nav-menu {
+    background: #0b1120;
+    border-bottom-color: #1e2d4a;
+  }
+}
+

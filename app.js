@@ -2,6 +2,23 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ─── 0. Theme Toggle (Light / Dark Mode) ───
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('cropvision-theme');
+  const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+  document.documentElement.setAttribute('data-theme', initialTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const activeTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('cropvision-theme', newTheme);
+    });
+  }
+
   // ─── 1. Mobile Navigation Toggle ───
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
