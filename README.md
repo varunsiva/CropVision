@@ -63,7 +63,7 @@ For project submission and evaluation by your project guide or university panel:
 ## 📋 Information You Can Personalize Before Final Submission
 
 1. **Team Details (`website/index.html` under `#team`)**:
-   - Team Members configured: **Varun**, **Deepan**, **Ripen**, and **Udhay**.
+   - Team Members configured: **Varun Sivaselvan V S**, **Deepan S**, **Ripan Samui**, and **Doreti Uday Kumar**.
    - Faculty Guide: **Project Guide / Mentor**.
 2. **Demonstration Video (`website/index.html` under `#video-demo`)**:
    - Record a 2–4 minute walkthrough of your app in action.
