@@ -83,5 +83,5 @@ For project submission and evaluation by your project guide or university panel:
 | **Team Details** | Provided in `#team` section with student slots, USN fields, and faculty guide designation. |
 | **Project Progress** | Mapped in `#progress` section across the 6 development phases verified from the codebase. |
 | **Documentation** | Interactive tabs in `#docs` detailing prerequisites, Supabase backend, ML server, and Flutter setup. |
-| **GitHub Repository Link** | Integrated in header navigation, hero action buttons, and footer (`https://github.com/CropVision-Team/CropVision.git`). |
+| **GitHub Repository Link** | Integrated in header navigation, hero action buttons, and footer (`https://github.com/CropVision-Team/Crop_Vision.git`). |
 | **Demonstration Video** | Dedicated responsive player slot in `#video-demo` with guidance on attaching recorded walkthroughs. |
