@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CropVision AI — Crop Leaf Disease Diagnosis &amp; Stage-Based Treatment System</title>
-  <meta name="description" content="A comprehensive capstone project portal detailing how CropVision was built: MobileViT vision transformer, dual quality gates, quantitative severity grading, and stage-calibrated treatment.">
+  <title>CropVision: A Mobile Crop Disease Detection System Using Image Validation and Severity Estimation</title>
+  <meta name="description" content="CropVision: A Mobile Crop Disease Detection System Using Image Validation and Severity Estimation — Lightweight vision transformers, blur and leaf content validation, quantitative G0–G3 severity grading, and stage-calibrated advice.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,11 +58,11 @@
   <div class="container hero-inner">
     <div class="hero-content reveal">
       <h1 class="hero-title">
-        Crop Leaf Disease Diagnosis &amp; 
-        <span class="highlight">Stage-Calibrated Treatment</span>
+        CropVision: A Mobile Crop Disease Detection System 
+        <span class="highlight">Using Image Validation and Severity Estimation</span>
       </h1>
       <p class="hero-desc">
-        CropVision AI combines <strong>MobileViT Vision Transformers</strong>, <strong>dual-gate on-device quality verification</strong>, and <strong>quantitative HSV lesion area grading (G0&ndash;G3)</strong> to deliver precise, farmer-friendly prescriptions right in the field.
+        CropVision presents an offline mobile framework combining <strong>MobileViT Vision Transformers (5.8 MB INT8)</strong>, <strong>on-device image validation (blur &amp; leaf checks)</strong>, and <strong>quantitative HSV severity estimation (G0&ndash;G3)</strong> to deliver precise, stage-calibrated agronomic advice.
       </p>
 
       <div class="hero-actions">
@@ -86,8 +86,8 @@
           <div class="metric-lbl">Severity Grading</div>
         </div>
         <div class="metric-card">
-          <div class="metric-num">2-Stage</div>
-          <div class="metric-lbl">Pre-Inference Gates</div>
+          <div class="metric-num">Validation</div>
+          <div class="metric-lbl">Blur &amp; Leaf Content Gates</div>
         </div>
         <div class="metric-card">
           <div class="metric-num">65</div>
@@ -430,11 +430,11 @@ with torch.no_grad():
             <thead>
               <tr>
                 <th>Model Architecture</th>
-                <th>Paradigm</th>
+                <th>Architecture Paradigm</th>
                 <th>Params (M)</th>
-                <th>FLOPs (G)</th>
-                <th>Mobile Latency (CPU)</th>
-                <th>Top-1 Accuracy</th>
+                <th>GFLOPs</th>
+                <th>INT8 Size</th>
+                <th>On-Device Latency (Snapdragon 680)</th>
                 <th>Macro-F1 Score</th>
               </tr>
             </thead>
@@ -442,43 +442,43 @@ with torch.no_grad():
               <tr>
                 <td><strong>DeiT-Tiny/16</strong> <span class="cite-tag">ICML '21</span></td>
                 <td>Pure Patch ViT (16&times;16 tokens)</td>
-                <td>5.7M</td>
+                <td>5.72M</td>
                 <td>1.3G</td>
-                <td>245 ms</td>
-                <td>96.82%</td>
-                <td>96.38%</td>
+                <td>5.7 MB</td>
+                <td>72.3 ms</td>
+                <td><strong>0.9742</strong> (97.42%)</td>
               </tr>
               <tr>
                 <td><strong>XCiT-Nano-12</strong> <span class="cite-tag">NeurIPS '21</span></td>
                 <td>Cross-Covariance Channel Attention</td>
-                <td>3.1M</td>
-                <td>0.6G</td>
-                <td>195 ms</td>
-                <td>97.45%</td>
-                <td>97.12%</td>
+                <td>3.05M</td>
+                <td>4.5G</td>
+                <td>3.1 MB</td>
+                <td>82.0 ms</td>
+                <td><strong>0.9765</strong> (97.65%)</td>
               </tr>
               <tr>
                 <td><strong>DE-HVT</strong> <span class="cite-tag">CVPR '22</span></td>
-                <td>Dynamic Hierarchical ViT</td>
-                <td>4.8M</td>
-                <td>0.9G</td>
-                <td>210 ms</td>
-                <td>97.90%</td>
-                <td>97.68%</td>
+                <td>Dual-Encoder Hybrid ViT</td>
+                <td>5.21M</td>
+                <td>3.6G</td>
+                <td>7.7 MB</td>
+                <td>66.4 ms</td>
+                <td><strong>0.9798</strong> (97.98%)</td>
               </tr>
               <tr class="benchmark-row-best">
                 <td>
                   <div class="model-best-tag">
-                    <strong>MobileViT-S (Ours)</strong>
-                    <span class="badge-winner">Best Performer</span>
+                    <strong>MobileViT-Small (Ours)</strong>
+                    <span class="badge-winner">Best Model</span>
                   </div>
                 </td>
                 <td><strong>Hybrid: MV2 Residual + Transformer</strong></td>
-                <td><strong>5.6M</strong></td>
+                <td><strong>5.60M</strong></td>
                 <td><strong>1.9G</strong></td>
-                <td><strong>112 ms</strong> <span class="speed-boost">2.2&times; Faster</span></td>
-                <td><strong class="highlight-stat">99.05%</strong></td>
-                <td><strong class="highlight-stat highlight-gold">98.94%</strong></td>
+                <td><strong>5.8 MB</strong></td>
+                <td><strong>43.0 ms</strong> <span class="speed-boost">Fastest</span></td>
+                <td><strong class="highlight-stat highlight-gold">0.9810</strong> (98.10%)</td>
               </tr>
             </tbody>
           </table>
@@ -695,6 +695,150 @@ CREATE POLICY "Users can only read own scans"
 CREATE POLICY "Users can only insert own scans"
   ON scans FOR INSERT
   WITH CHECK (auth.uid() = user_id);</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supabase Live Cloud Database Tables Explorer -->
+      <div class="supabase-gallery-card reveal">
+        <div class="supabase-gallery-header">
+          <div class="paper-badge-row">
+            <span class="paper-badge">Cloud Database Architecture</span>
+            <span class="paper-badge paper-badge-highlight">Live Supabase PostgreSQL Studio</span>
+          </div>
+          <h3>Production Relational Database Tables &amp; Records</h3>
+          <p>
+            Real-time screen captures from our deployed <strong>Supabase PostgreSQL</strong> cloud instance, showing authenticated user records, diagnosis scans, treatment matrices, and agronomist chat messages.
+          </p>
+        </div>
+
+        <div class="supabase-grid">
+          <!-- Table 1: diagnoses -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/diagnoses.jpg', 'public.diagnoses — Scan Records, Leaf Validation &amp; Disease Predictions')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/diagnoses.jpg" alt="public.diagnoses table" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.diagnoses</span>
+              <h5>Diagnostic Scans &amp; Gates</h5>
+              <p>Stores uploaded image URLs, <code>is_valid_leaf</code> check, predicted diseases, and model confidence scores.</p>
+            </div>
+          </div>
+
+          <!-- Table 2: treatment_guidelines -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/treatment_guidelines.jpg', 'public.treatment_guidelines — 65 Curated Stage Prescriptions')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/treatment_guidelines.jpg" alt="public.treatment_guidelines table" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.treatment_guidelines</span>
+              <h5>Stage Prescription Rules</h5>
+              <p>FRAC chemical groups, organic alternatives, and field hygiene mapped per crop, disease, and G0–G3 grade.</p>
+            </div>
+          </div>
+
+          <!-- Table 3: crops -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/crops.jpg', 'public.crops — Supported Crop Cultivars &amp; Disease Mappings')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/crops.jpg" alt="public.crops table" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.crops</span>
+              <h5>Supported Cultivars</h5>
+              <p>Master registry of 14 crops (Apple, Corn, Grape, Potato, Tomato, etc.) and their pathology arrays.</p>
+            </div>
+          </div>
+
+          <!-- Table 4: crop_growth_tracking -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/crop_growth_tracking.jpg', 'public.crop_growth_tracking — Farmer Planting &amp; Timeline Tracking')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/crop_growth_tracking.jpg" alt="public.crop_growth_tracking table" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.crop_growth_tracking</span>
+              <h5>Growth Calendar Logs</h5>
+              <p>Records farmer planting dates and active field varieties to track days-since-planting phenology.</p>
+            </div>
+          </div>
+
+          <!-- Table 5: chat_messages -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/chat_messages.jpg', 'public.chat_messages — AI Agronomist Chat Conversation History')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/chat_messages.jpg" alt="public.chat_messages table" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.chat_messages</span>
+              <h5>AI Agronomist Chats</h5>
+              <p>Natural-language chat history between farmers and the Gemini-powered agricultural consultant.</p>
+            </div>
+          </div>
+
+          <!-- Table 6: profiles -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/profiles.jpg', 'public.profiles — User Accounts &amp; Farmer Preferences')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/profiles.jpg" alt="public.profiles table" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.profiles</span>
+              <h5>User Profiles &amp; Auth</h5>
+              <p>Stores authenticated farmer profiles (Varun, Ripan, etc.), contact details, and preferred languages.</p>
+            </div>
+          </div>
+
+          <!-- Table 7: reminders -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/reminders.jpg', 'public.reminders — Field Reminders &amp; Spray Notifications')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/reminders.jpg" alt="public.reminders table" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.reminders</span>
+              <h5>Spray &amp; Irrigation Alerts</h5>
+              <p>Scheduled cultural events (e.g. "tomorrow I have to give water") with completion statuses.</p>
+            </div>
+          </div>
+
+          <!-- Table 8: reminders_detail -->
+          <div class="supabase-item" onclick="openLightbox('assets/supabase/reminders_detail.jpg', 'public.reminders (Full Schema) — Recurrence &amp; Timestamps')">
+            <div class="supabase-thumb-wrap">
+              <img src="assets/supabase/reminders_detail.jpg" alt="public.reminders detailed schema" loading="lazy" class="supabase-thumb">
+              <span class="supabase-expand-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Zoom
+              </span>
+            </div>
+            <div class="supabase-info">
+              <span class="supabase-tag">public.reminders (Full)</span>
+              <h5>Recurrence &amp; State Policy</h5>
+              <p>Schema view including recurrence intervals, boolean completion flags, and RLS audit timestamps.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1295,7 +1439,7 @@ flutter run -d chrome</code></pre>
     <div class="section-header reveal">
       <span class="section-eyebrow">Academic Capstone</span>
       <h2>Project Team &amp; Faculty Mentorship</h2>
-      <p>Final Year Engineering Project &bull; Department of Computer Science &amp; Engineering</p>
+      <p>Amrita Vishwa Vidyapeetham, Coimbatore, India &bull; Department of Computer Science &amp; Engineering</p>
     </div>
 
     <div class="team-grid reveal">
@@ -1303,28 +1447,28 @@ flutter run -d chrome</code></pre>
         <div class="team-avatar">VS</div>
         <h4>Varun Sivaselvan V S</h4>
         <div class="team-role">Lead Developer &bull; ML &amp; Mobile</div>
-        <div class="team-dept">Dept. of Computer Science &amp; Engineering</div>
+        <div class="team-dept">Amrita Vishwa Vidyapeetham</div>
       </div>
 
       <div class="team-card">
         <div class="team-avatar">DS</div>
         <h4>Deepan S</h4>
         <div class="team-role">Full-Stack &bull; Backend &amp; Data</div>
-        <div class="team-dept">Dept. of Computer Science &amp; Engineering</div>
+        <div class="team-dept">Amrita Vishwa Vidyapeetham</div>
       </div>
 
       <div class="team-card">
         <div class="team-avatar">RS</div>
         <h4>Ripan Samui</h4>
         <div class="team-role">Frontend &amp; UI/UX Design</div>
-        <div class="team-dept">Dept. of Computer Science &amp; Engineering</div>
+        <div class="team-dept">Amrita Vishwa Vidyapeetham</div>
       </div>
 
       <div class="team-card">
         <div class="team-avatar">DU</div>
         <h4>Doreti Uday Kumar</h4>
         <div class="team-role">Testing &amp; Dataset Validation</div>
-        <div class="team-dept">Dept. of Computer Science &amp; Engineering</div>
+        <div class="team-dept">Amrita Vishwa Vidyapeetham</div>
       </div>
     </div>
 
@@ -1332,8 +1476,8 @@ flutter run -d chrome</code></pre>
       <div class="mentor-card">
         <div class="mentor-badge">Faculty Guide</div>
         <div class="mentor-info">
-          <h4>Suchithra M</h4>
-          <p>Project Guide &bull; Department of Computer Science &amp; Engineering</p>
+          <h4>Dr. Suchithra M</h4>
+          <p>Faculty Guide &bull; Department of Computer Science &amp; Engineering, Amrita Vishwa Vidyapeetham</p>
         </div>
       </div>
     </div>

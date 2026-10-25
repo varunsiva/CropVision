@@ -1,45 +1,46 @@
 {
   "project": {
     "name": "CropVision AI",
-    "tagline": "Instant Crop Disease Diagnosis for Every Farmer",
-    "description": "A mobile AI system that lets farmers photograph a crop leaf and instantly receive the disease name, severity grade, and step-by-step treatment.",
+    "tagline": "A Mobile Crop Disease Detection System Using Image Validation and Severity Estimation",
+    "description": "An offline mobile framework that checks photographs for blur and leaf content, identifies crop and disease via MobileViT (5.8 MB INT8), and estimates quantitative G0–G3 damage severity.",
     "github": "https://github.com/CropVision-Team/Crop_Vision.git",
     "demo": "http://localhost:8080",
     "demoVideo": "assets/videos/demo.mp4",
     "apkDownload": "CropVision.apk"
   },
   "institution": {
-    "name": "Department of Computer Science & Engineering",
+    "name": "Amrita Vishwa Vidyapeetham",
     "department": "Department of Computer Science & Engineering",
+    "location": "Coimbatore, India",
     "academicYear": "2025-2026",
-    "course": "B.E. Final Year Project"
+    "course": "B.Tech Final Year Project"
   },
   "team": {
     "guide": {
-      "name": "Ms. Suchithra M",
-      "title": "Project Guide & Mentor",
+      "name": "Dr. Suchithra M",
+      "title": "Faculty Guide",
       "designation": "Assistant Professor",
-      "email": "suchithra@cse.edu"
+      "email": "m_suchithra@cb.amrita.edu"
     },
     "members": [
-      { "name": "Varun Sivaselvan V S", "role": "Team Lead, Full-Stack & ML", "initials": "VS" },
-      { "name": "Deepan S", "role": "AI/ML Engineer", "initials": "DS" },
-      { "name": "Ripan Samui", "role": "Backend Developer", "initials": "RS" },
-      { "name": "Doreti Uday Kumar", "role": "Computer Vision Engineer", "initials": "DU" }
+      { "name": "Varun Sivaselvan V S", "role": "Lead Developer, ML & Mobile", "initials": "VS", "email": "cb.sc.u4cse23064@cb.students.amrita.edu" },
+      { "name": "Deepan S", "role": "Full-Stack, Backend & Data", "initials": "DS", "email": "cb.sc.u4cse23545@cb.students.amrita.edu" },
+      { "name": "Ripan Samui", "role": "Frontend & UI/UX Design", "initials": "RS", "email": "cb.sc.u4cse23368@cb.students.amrita.edu" },
+      { "name": "Doreti Uday Kumar", "role": "Testing & Dataset Validation", "initials": "DU", "email": "cb.sc.u4cse23655@cb.students.amrita.edu" }
     ]
   },
   "metrics": {
     "classes": 38,
     "cropTypes": 14,
-    "validationAccuracy": "99.09%",
-    "testAccuracy": "99.05%",
+    "testAccuracy": "98.56%",
+    "macroF1": "0.9810 (98.10%)",
     "treatmentCombinations": 65,
-    "automatedTests": 53,
-    "trainingEpochs": "5",
+    "trainingEpochs": "50",
     "batchSize": 32,
     "inputSize": "224x224 px",
-    "modelParams": "5.6M",
-    "inferenceTime": "~140 ms"
+    "modelParams": "5.60M",
+    "modelSizeINT8": "5.8 MB",
+    "inferenceTime": "43.0 ms (Snapdragon 680)"
   },
   "videos": {
     "mainVideo": {
