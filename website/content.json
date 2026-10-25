@@ -24,8 +24,8 @@
     "members": [
       { "name": "Varun Sivaselvan V S", "role": "Team Lead, Full-Stack & ML", "initials": "VS" },
       { "name": "Deepan S", "role": "AI/ML Engineer", "initials": "DS" },
-      { "name": "Rippan", "role": "Backend Developer", "initials": "RP" },
-      { "name": "Udhay", "role": "Computer Vision Engineer", "initials": "UD" }
+      { "name": "Ripan Samui", "role": "Backend Developer", "initials": "RS" },
+      { "name": "Doreti Uday Kumar", "role": "Computer Vision Engineer", "initials": "DU" }
     ]
   },
   "metrics": {
