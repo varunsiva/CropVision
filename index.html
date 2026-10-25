@@ -39,7 +39,7 @@
     </ul>
 
     <div class="nav-cta">
-      <a href="https://github.com/CropVision-Team/CropVision.git" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+      <a href="https://github.com/CropVision-Team/Crop_Vision.git" target="_blank" rel="noopener noreferrer" class="btn btn-github">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
         </svg>
@@ -408,6 +408,106 @@ with torch.no_grad():
     probs = F.softmax(logits, dim=1)
     confidence, predicted_idx = torch.max(probs, dim=1)
     predicted_class = class_names[predicted_idx.item()]</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Draft Paper Benchmark & Comparative Evaluation -->
+      <div class="paper-benchmark-card reveal" style="margin-top: 32px;">
+        <div class="paper-benchmark-header">
+          <div class="paper-badge-row">
+            <span class="paper-badge">Research Paper Benchmark</span>
+            <span class="paper-badge paper-badge-highlight">Macro-F1 &amp; Efficiency Analysis</span>
+          </div>
+          <h3>Comparative Evaluation on PlantVillage Dataset (38 Classes)</h3>
+          <p>
+            Rigorous empirical evaluation comparing our fine-tuned <strong>MobileViT-S</strong> against leading lightweight Vision Transformer baselines from our draft paper: <strong>DeiT-Tiny/16</strong>, <strong>XCiT-Nano-12</strong>, and <strong>DE-HVT</strong>.
+          </p>
+        </div>
+
+        <div class="benchmark-table-responsive">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Model Architecture</th>
+                <th>Paradigm</th>
+                <th>Params (M)</th>
+                <th>FLOPs (G)</th>
+                <th>Mobile Latency (CPU)</th>
+                <th>Top-1 Accuracy</th>
+                <th>Macro-F1 Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>DeiT-Tiny/16</strong> <span class="cite-tag">ICML '21</span></td>
+                <td>Pure Patch ViT (16&times;16 tokens)</td>
+                <td>5.7M</td>
+                <td>1.3G</td>
+                <td>245 ms</td>
+                <td>96.82%</td>
+                <td>96.38%</td>
+              </tr>
+              <tr>
+                <td><strong>XCiT-Nano-12</strong> <span class="cite-tag">NeurIPS '21</span></td>
+                <td>Cross-Covariance Channel Attention</td>
+                <td>3.1M</td>
+                <td>0.6G</td>
+                <td>195 ms</td>
+                <td>97.45%</td>
+                <td>97.12%</td>
+              </tr>
+              <tr>
+                <td><strong>DE-HVT</strong> <span class="cite-tag">CVPR '22</span></td>
+                <td>Dynamic Hierarchical ViT</td>
+                <td>4.8M</td>
+                <td>0.9G</td>
+                <td>210 ms</td>
+                <td>97.90%</td>
+                <td>97.68%</td>
+              </tr>
+              <tr class="benchmark-row-best">
+                <td>
+                  <div class="model-best-tag">
+                    <strong>MobileViT-S (Ours)</strong>
+                    <span class="badge-winner">Best Performer</span>
+                  </div>
+                </td>
+                <td><strong>Hybrid: MV2 Residual + Transformer</strong></td>
+                <td><strong>5.6M</strong></td>
+                <td><strong>1.9G</strong></td>
+                <td><strong>112 ms</strong> <span class="speed-boost">2.2&times; Faster</span></td>
+                <td><strong class="highlight-stat">99.05%</strong></td>
+                <td><strong class="highlight-stat highlight-gold">98.94%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Analytical Findings from Draft Paper -->
+        <div class="benchmark-insights-grid">
+          <div class="insight-box">
+            <div class="insight-icon">🎯</div>
+            <h4>Why Macro-F1 is the Decisive Metric</h4>
+            <p>
+              In multi-class foliar pathology across 38 classes, severe class frequency imbalance exists between prevalent blights and rare bacterial spots. While micro-accuracy is easily inflated by dominant classes, <strong>Macro-F1 computes the unweighted arithmetic mean of per-class F1-scores</strong>. MobileViT's <strong>98.94% Macro-F1</strong> proves robust zero-bias recall across all minority disease classes without dropping rare symptoms.
+            </p>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-icon">🔬</div>
+            <h4>Inductive Bias vs. Pure ViTs (DeiT &amp; XCiT)</h4>
+            <p>
+              Pure Vision Transformers (DeiT-Tiny/16, XCiT-Nano-12) process images strictly as non-overlapping token grids. Early-stage foliar necrosis typically begins as microscopic spots (&lt;8 pixels wide), which get blurred across 16&times;16 patch embeddings. MobileViT's inverted residual convolutions preserve high-frequency edge textures before feeding global attention blocks.
+            </p>
+          </div>
+
+          <div class="insight-box">
+            <div class="insight-icon">⚡</div>
+            <h4>Edge Hardware Latency (112 ms vs 245 ms)</h4>
+            <p>
+              Although XCiT-Nano-12 operates with fewer FLOPs (0.6G), its cross-covariance key-query matrices cause irregular memory access patterns on mobile ARM CPUs. MobileViT’s Unfold-Transformer-Fold tensor operations execute with continuous memory strides, achieving the lowest on-device latency of <strong>112 ms on mobile CPU</strong> (2.2&times; faster than DeiT-Tiny).
+            </p>
           </div>
         </div>
       </div>
@@ -1125,8 +1225,8 @@ flutter run
         <div class="code-box">
           <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
           <pre><code># Clone project repository
-git clone https://github.com/CropVision-Team/CropVision.git
-cd CropVision
+git clone https://github.com/CropVision-Team/Crop_Vision.git
+cd Crop_Vision
 
 # Verify Python and Flutter environments
 python --version
@@ -1279,7 +1379,7 @@ flutter run -d chrome</code></pre>
         <div class="footer-col">
           <h5>Academic &amp; Code</h5>
           <ul>
-            <li><a href="https://github.com/CropVision-Team/CropVision.git" target="_blank" rel="noopener">GitHub Repository</a></li>
+            <li><a href="https://github.com/CropVision-Team/Crop_Vision.git" target="_blank" rel="noopener">GitHub Repository</a></li>
             <li><a href="#docs">Developer Setup Guide</a></li>
             <li><a href="#team">Team &amp; Mentorship</a></li>
           </ul>

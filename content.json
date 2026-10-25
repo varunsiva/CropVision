@@ -3,7 +3,7 @@
     "name": "CropVision AI",
     "tagline": "Instant Crop Disease Diagnosis for Every Farmer",
     "description": "A mobile AI system that lets farmers photograph a crop leaf and instantly receive the disease name, severity grade, and step-by-step treatment.",
-    "github": "https://github.com/CropVision-Team/CropVision.git",
+    "github": "https://github.com/CropVision-Team/Crop_Vision.git",
     "demo": "http://localhost:8080",
     "demoVideo": "assets/videos/demo.mp4",
     "apkDownload": "CropVision.apk"
@@ -120,6 +120,6 @@
     "projectReport": "#",
     "srs": "#",
     "ppt": "#",
-    "apk": "https://github.com/CropVision-Team/CropVision/releases"
+    "apk": "https://github.com/CropVision-Team/Crop_Vision/releases"
   }
 }
